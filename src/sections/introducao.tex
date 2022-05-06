@@ -9,28 +9,24 @@
 
     \cite{Sibgrapi2021}.
 
-    A Cache é um dispositivo de acesso rápido, que fica localizado dentro do processador,
-    com a intenção de reduzir o acesso do processador à memória principal, que demanda um
-    tempo de acesso muito superior à cache. Criando uma referência da localidade do dado na 
-    memória principal, até mesmo gravando esses dados, porém existe um limite de quantos 
-    dados podem ser armazenados. Para isso é necessário uma política de armazenamento para 
-    reocupar espaço quando necessário.
+    No ramo de inteligência artificial, existe um mercado amplo onde 
+    têcnicas dessa área são usadas para criarem oponentes que possam
+    derrotar qualquer jogador. Um dos maiores desafios desta divisão,
+    é como tratar os jogos de azar, onde a sorte é um elemento que 
+    precisa ser calculado para a realização das jogadas.
 
-    Desde a invenção dos computadores, a busca por otimizar os processos que são executados 
-    nos hardwares se tornou foco, considerando que simples ajustes podem render grandes 
-    ganhos de desempenho. Dessa forma, um algoritmo eficiente na leitura e escrita de 
-    dados na cache é de grande importância. 
+    Neste estudo, pretendemos criar uma aplicação prática que 
+    possa ser usada para criar um jogador inteligente de Blackjack(no 
+    Brasil conhecido como 21). Além disso iremos avaliar diferentes 
+    estratégias/políticas e avaliar a utilidade esperada de cada estratégia 
+    para a inteligência artificial.
 
-    Com isso em mente, pensamos em políticas de substituição clássicos, LRU e o FIFO, para
-    averiguar qual possui melhor desempenho em diferentes cenários. Começamos pensando em 
-    aumentar gradativamente o número de instruções que acessam as palavras na RAM para serem 
-    escritas na cache. Dessa forma, seria simples visualizar como o número de instruções
-    influencia no tempo de acesso aos dados. Além disso, pensamos também em vários cenários 
-    com caches de diferentes tamanhos, desde o mínimo de espaço possível, até uma cache 
-    de mesmo tamanho que a memória RAM.
-
-    O resto do papel está organizado da seguinte maneira. Seção 2 irá mostrar pesquisas correlatas,
-    apresentar de maneira breve o assunto de cada e se existe algo que possa contribuir com a pesquisa atual.
-    Seção 3 apresenta as arquiteturas utilizadas para a realização dos testes, assim também com os cenários 
-    que foram testados. Resultados experimentais são colocados na Seção 4. Por fim, a Seção 5 dá conclusão 
-    a nossa pesquisa.
+    O artigo está dividido da seguinte maneira: primeiros na secção 2 
+    será explorado um pouco da literatura já existente do assunto. Na secção 
+    3 as regras do Blackjack serão expostas e analisadas no contexto da aplicação 
+    que será feita. No estudo em questão, a Godot Engine será utilizada para 
+    criar a interface do programa. Na secção 4 será analisado as diferentes 
+    estratégias e políticas utilizadas no programa. Na secção 5 acontecerá uma análise 
+    dos resultados chegados, a precisão de cada modelo e o tempo de execução. Por fim, 
+    terá a conclusão, onde será dado uma opinião final sobre os dados chegados, além de possíveis 
+    futuros trabalhos que podem ser feitos a partir deste.
