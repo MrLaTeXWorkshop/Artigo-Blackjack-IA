@@ -1,73 +1,58 @@
 \section{Metodologia ou Proposta de Arquiteturas}
 
+    Antes de compreender a metodologia aplicada a este estudo, é preciso entender
+    a natureza do problema que estudo quer resolver, em outras palavras, é preciso 
+    dar uma introdução ao jogo 21 e quais regras do jogo serão usados na simulação 
+    feita neste estudo.
+
+\subsection{Entendendo 21 e as regras aplicadas}
+
+    O 21 (também conhecido como Blackjack) é um jogo de cartas francês onde pode ser 
+    jogado por um ou mais jogadores sempre todos contra o dealer, e para ganhar 
+    é necessário ter uma pontuação maior que a do dealer e menor ou igual a 21.
+    Essa pontuação é proveniente dos valores das cartas, onde cartas com figuras exceto os “ás” 
+    possuem valor igual a 10, o “ás” pode valer 1 ou 11 caso o valor da mão não
+    seja superior a 21, caso contrário o valor do ás se altera para 1 , as demais 
+    cartas tem o valor igual ao que está escrito na carta. 
+    No início de toda rodada cada jogador faz a sua aposta, e recebe duas 
+    cartas viradas para cima, junto a isso o dealer também recebe duas cartas,
+    porém somente uma fica virada para o cima e ao final do jogo é revelada. 
+    Os jogadores podem executar algumas ações sendo elas:
+\begin{itemize}
+    \item \textbf{hit:} O jogador solicita mais uma carta ao dealer  
+    \item \textbf{Stand:} O jogador não vai mais solicitar cartas 
+    \item \textbf{Dobrar:} Somente após receber as duas primeiras cartas o 
+    jogador pode dobrar a aposta e em consequência receber uma nova carta.
+    \item \textbf{Split:} Após receber a primeira duas cartas e caso elas 
+    possuam o mesmo valor, o jogador pode dividir essa mão em duas novas mão
+    \item \textbf{Surrender:}  O jogador desiste do jogo e perde metade da aposta  
+\end{itemize}
+
+    Para o propósito do nosso trabalho colocamos apenas as duas funções 
+    mais simples do jogo, hit e stand. 
+
+    Com o jogo e suas regras introduzidos, também seria importante apresentar a 
+    tecnologia utilizado neste trabalho, a Godot Engine e sua linguagem GDScript.
+
+\subsection{Godot Engine}
+
+    A Godot engine\cite{GodotEngine} é um motor gráfico para jogos \textit{cross-platform} de 
+    código aberto, tendo sua primeira versão lançada em 2014 pelos Argentinos 
+    Juan Linietsky e Ariel Manzur. O propósito da Godot é criar um ambiente 
+    completo para o desenvolvimento de jogos 2D e 3D, com licença aberta, logo, 
+    os desenvolvedores tem todos os direitos em cima da sua criação (sem \textit{royalties}). 
+    Alem disso, ela está disponível para todas as plataformas (Linux, macOs, Windows).
+
+    Uma das grandes vantagens de trabalhar com a Godot Engine, e o motivo pelo qual esta
+    foi escolhida para realizar este estudo, se deve ao fato que a Godot Engine facilita imensamente 
+    o desenvolvimento dos jogos, com sua interface fácil de aprender e sua linguagem de programação
+    GDScript, que possui um sistema de tipagem bem parecido com linguagens de alto nível 
+    como Python e Javascript. Por fim, a Godot Engine ainda possui suporte a GDNative, permitindo 
+    que os jogos sejam programados em C ou C++ e pacotes da comunidade como o Godot-python\cite{GodotPython}, permite 
+    rodar códigos de Python dentro da engine, abrindo as portas para o uso de aprendizado de máquina e 
+    aprendizado profundo usando pacotes como o Godot RL Agents\cite{beeching2021godotrlagents}.
+
+
     %A metodologia utilizada no artigo consiste no estudo de artigos que se correlacionam com o tema estudado, 
     %como também a utilização e desenvolvimento de arquiteturas feitas no simulador Amnesia.
-    Para a elaboração de teste utilizamos o simulador-Amnésia para elaborar algumas
-    arquiteturas (tabelas \ref{tab1} e \ref{tab2}) que a partir desses cenários serem executados
-    executamos os testes (tabela \ref{tab3})
-
-    \begin{table}[!t]
-    \caption{características gerais da arquitetura ii}
-    \centering
-        \begin{tabular}{|c|c|c|}
-            \hline
-            \textbf{Especificações} & \multicolumn{2}{|c|}{\textbf{Partes da Arquitetura}} \\
-            \cline{2-3} 
-            \textbf{da Arquitetura} & \textbf{\textit{Memória Principal}}& \textbf{\textit{Cache}} \\
-            \hline
-            Tamanho da linha / bloco & 1 & 1  \\
-            \hline
-            Ciclos por leitura & 1 & 1  \\
-            \hline
-            Ciclos por escrita & 2 & 2  \\
-            \hline
-            Tempo do ciclo & 10 & 1  \\
-            \hline
-            Tamanho da memória & 16 & {$^{\mathrm{*}}$}2  \\
-            \hline
-            Associatividade & --- & 2  \\
-            \hline
-            Politica de escrita & --- & Write-Through  \\
-            \hline
-            Politica de substituição & --- & {$^{\mathrm{*}}$}FIFO  \\
-            \hline
-            \multicolumn{3}{l}{$^{\mathrm{*}}$ Os valores com o asterisco foram os valores modificados.}
-        \end{tabular}
-        \label{tab2}
-    \end{table}
-
-    \begin{table}[!t]
-    \caption{Dados modificados}
-    \centering
-        \begin{tabular}{|c|c|c|}
-            \hline
-            \textbf{Especificações} & \multicolumn{2}{|c|}{\textbf{Valores}} \\
-            \cline{2-3} 
-            \textbf{da Arquitetura} & \textbf{Tamanho da Memoria} & \textbf{Politica de Substituição} \\
-            \hline
-            Cenário 1 & 2 & FIFO \\
-            \hline
-            Cenário 2 & 2 & LRU \\
-            \hline
-            Cenário 3 & 4 & FIFO\\
-            \hline
-            Cenário 4 & 4 & LRU\\
-            \hline
-            Cenário 5 & 8 & FIFO\\
-            \hline
-            Cenário 6 & 8 & LRU\\
-            \hline
-            Cenário 7 & 16 & FIFO\\
-            \hline
-            Cenário 8 & 16 & LRU\\
-            \hline
-            %\multicolumn{3}{l} {Sample of a Table footnote.}
-        \end{tabular}
-        \label{tab3}
-    \end{table}
-
-    Ao modificar o valor do tamanho da memória e da política de substituição da cache,
-    é possível criar 8 cenários distintos para se avaliar o impacto do tamanho da cache
-    no desempenho dos métodos de substituição. Sendo assim, com os cenários propostos
-    foram realizados diversos testes com o intuito de analisar a localidade temporal e
-    localidade espacial nas arquiteturas.
+    
