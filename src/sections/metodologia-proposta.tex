@@ -7,17 +7,18 @@
 
 \subsection{Entendendo 21 e as regras aplicadas}
 
-    O 21 (também conhecido como Blackjack) é um jogo de cartas francês onde pode ser 
+    O 21\cite{blackjack-wikipedia} (também conhecido como Blackjack) é um jogo de cartas francês onde pode ser 
     jogado por um ou mais jogadores sempre todos contra o dealer, e para ganhar 
     é necessário ter uma pontuação maior que a do dealer e menor ou igual a 21.
     Essa pontuação é proveniente dos valores das cartas, onde cartas com figuras exceto os “ás” 
     possuem valor igual a 10, o “ás” pode valer 1 ou 11 caso o valor da mão não
     seja superior a 21, caso contrário o valor do ás se altera para 1 , as demais 
     cartas tem o valor igual ao que está escrito na carta. 
+
     No início de toda rodada cada jogador faz a sua aposta, e recebe duas 
     cartas viradas para cima, junto a isso o dealer também recebe duas cartas,
     porém somente uma fica virada para o cima e ao final do jogo é revelada. 
-    Os jogadores podem executar algumas ações sendo elas:
+    Os jogadores podem executar algumas ações\cite{blackjack-pokerstars} sendo elas:
 \begin{itemize}
     \item \textbf{hit:} O jogador solicita mais uma carta ao dealer  
     \item \textbf{Stand:} O jogador não vai mais solicitar cartas 
@@ -49,9 +50,37 @@
     GDScript, que possui um sistema de tipagem bem parecido com linguagens de alto nível 
     como Python e Javascript. Por fim, a Godot Engine ainda possui suporte a GDNative, permitindo 
     que os jogos sejam programados em C ou C++ e pacotes da comunidade como o Godot-python\cite{GodotPython}, permite 
-    rodar códigos de Python dentro da engine, abrindo as portas para o uso de aprendizado de máquina e 
-    aprendizado profundo usando pacotes como o Godot RL Agents\cite{beeching2021godotrlagents}.
+    rodar códigos de Python dentro da engine, abrindo as portas para o uso de aprendizado de máquina.
 
+    Com a base do estudo edificada, é possível agora apresentar as metodologias.
+
+\subsection{Metodologias utilizadas}
+
+    Para esse trabalho o objeto de discussão é a utilização do algoritmo de Expectiminimax
+    e para a base de comparação será utilizado o Algoritmo Genético e o algoritmo de Contar Cartas. 
+
+    A escolha do expectiminimax se dá, pois em um cenário de um jogo de soma zero como o blackjack, 
+    para um jogador vencer é necessário que o outro jogador perca , e onde o algoritmo de expectiminimax 
+    se encaixa perfeitamente pois além de buscar maximizar os ganhos e minimizar as perdas,dado o algoritmo 
+    que foi baseado ,o minimax, ele adiciona a árvore de avaliação de cenários, um peso probabilístico, o 
+    que encaixa perfeitamente no cenário do blackjack onde existe uma probabilidade de uma carta vim. 
+
+    Em contrapartida temos o algoritmo de contar carta, que neste artigo iremos usar o estratégia Hi-Lo, onde é 
+    atribuído um valor mais um as cartas de dois a seis, do sete ao novo é atribuído o valor zero e as cartas restantes 
+    o valor menos um, tendo isso em mente o jogador vai somar todas as cartas que são dadas na mesma e se a contagem tiver 
+    positiva ele tem uma maior chance e em consequência ele pode apostar valores maiores caso contrário ele evita fazer novas 
+    aposta naquele jogo. O uso da estratégia Hi-Lo neste artigo serve como uma métrica de comparação pois, como está estratégia 
+    já é bem estabelecida e ter resultados consistentes, ela é um ótimo fator de comparação. \cite{hi-lo-system} \cite{hi-lo-counting-card}
+
+    E por último, usamos um algoritmo genético, onde temos que este modelo é um algoritmo inspirado na teoria da evolução das
+    espécies de charles darwin, onde dado algumas condições básicas geramos um conjunto de bots que vão desempenhar alguma
+    atividade e serão avaliados, os que tiverem melhores resultados e também alguns com resultados ruins, são selecionados,
+    após essa seleção é feito uma mutação nesta população e é aplicado aos mesmo testes e são tomadas as mesma ações até chegar
+    em um população que atingiu seu limite de evolução ou que chegou em um resultado que pode ser considerado aceitável. A abordagem
+    genética neste contexto vai nos servir como comparação para os resultados do expectiminimax, para verificar se existe alguma vantagem
+    no uso do expectiminimax em relação a uma estratégia que é voltada ao aprendizado de máquinas.   
+
+    
 
     %A metodologia utilizada no artigo consiste no estudo de artigos que se correlacionam com o tema estudado, 
     %como também a utilização e desenvolvimento de arquiteturas feitas no simulador Amnesia.
