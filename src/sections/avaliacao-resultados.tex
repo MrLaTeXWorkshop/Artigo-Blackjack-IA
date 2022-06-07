@@ -5,8 +5,6 @@ estratégias em partidas controladas de 21 dentro da aplicação que foi criada.
 de ir direto para os resultado, seria interessante como os testes foram realizados 
 e configurados para cada uma das situações.
 
-\newpage
-
 \subsection{Analisando a interface de testes}
 
 \begin{figure}[ht] 
@@ -16,8 +14,10 @@ e configurados para cada uma das situações.
     \label{fig:main_menu}
 \end{figure}
 
-Na figura \ref{fig:main_menu} temos a tela do menu inicial do jogo. Aqui temos 
-duas opções que são relevantes: \emph{New game} e \emph{Settings}
+\newpage
+
+Na figura \ref{fig:main_menu} temos a tela do menu toda vez que o jogador rodar pela 
+primeira vez a aplicação. O menu principal possui duas opções que são relevantes: \emph{New game} e \emph{Settings}
 
 \begin{figure}[ht] 
     \centering
@@ -26,9 +26,8 @@ duas opções que são relevantes: \emph{New game} e \emph{Settings}
     \label{fig:settings}
 \end{figure}
 
-Na tela de configurações é possível escolher qual será a estratégia 
-empregada pelo inimigo, que no caso as opções são: \emph{Expectiminimax}, 
-\emph{Genetic Learning} e \emph{Counting Cards}.
+Na tela de mostrada na figura \ref{fig:settings} é possível escolher qual será a estratégia 
+empregada pelo inimigo, que no caso as opções são: \emph{Expectimax} e \emph{Counting Cards}.
 
 Além disso, é também configurar outras opções do jogo, como o tempo para 
 as cartas descerem e o volume do jogo.
@@ -71,16 +70,19 @@ Acima das carta, o jogador tem duas opções:
     \label{fig:you_win}
 \end{figure}
 
+\newpage 
+
 \subsection{Testes}
 
-Eis a maneira em como foi realizado os testes, um total de cem(100) testes 
-foram feitos para cada uma das estratégias diferentes e analisado a
-porcentagem de vitória de cada uma das políticas, a tabela mostra como foi 
-o resultado desses testes.
+A maneira em como foi realizado os testes, foi a partir do teste manual 
+de cinquenta(50), cem(100) e cento e cinquenta(150) testes isolados, feito no total 
+trezentos testes(300) com o intuito de analisar a precisão das diferentes estratégias 
+e analisando a porcentagem de vitória de cada uma das políticas. Por fim, foi também 
+analisado o tempo de execução das funções.
 
 \begin{table}[htbp]
     \centering
-    \caption{Resultados dos testes}
+    \caption{Precisão das políticas}
     \begin{tabular}{|c | c | c | c|} 
         \hline
         Estratégias & \multicolumn{3}{|c|}{\textbf{Porcentagem de vitória por número de testes}} \\ 
@@ -92,8 +94,32 @@ o resultado desses testes.
         Expectiminimax & 38.4\% & 38.6\% & 38.9\% \\
         \hline
     \end{tabular}
-    \label{tab:results}
+    \label{tab:precision}
 \end{table}
 
-Podemos notar que os resultados  \ref{tab:results}
+\begin{table}[htbp]
+    \centering
+    \caption{Tempo de execução}
+    \begin{tabular}{|c | c |} 
+        \hline
+        Estratégias & Tempo médio de execução (em segundos) \\ 
+        \hline 
+        Contar cartas  & 0.2 \\
+        \hline
+        Expectiminimax & 0.8 \\
+        \hline
+    \end{tabular}
+    \label{tab:execution_time}
+\end{table}
+
+A partir da análise das tabelas \ref{tab:precision} e \ref{tab:execution_time} 
+o Expectimax obteve resultado levemente piores que o algoritmo de contar cartas,
+o que pode indicar que a heurística escolhida \cite{Introduction-high-low} \cite{odds-house-edge} \cite{win-loss-data} ou o que o fator de possibilidade não 
+foram os melhores , e com mais teste e ajuste poderia a ter resultados melhores que o 
+contar cartas. Porém, por causa da sua complexidade e o seu tempo de execução 
+sendo consideravelmente maior,o algoritmo do Expectimax neste 
+cenários explorados não demonstrou-se uma solução viável para substituir uma técnica bem 
+estabelecida como o contar cartas, mas em situações futuras com uma melhor heurística 
+talvez em determinados cenários e também com um número mais substancial de testes, pode 
+ser que o algoritmo em questão possa demonstra-se viável para uso. 
 
